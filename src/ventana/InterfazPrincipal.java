@@ -5,6 +5,8 @@
  */
 package ventana;
 
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -15,6 +17,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
+    
+    
+    Conectar conecta = new Conectar();
+    
     public InterfazPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,12 +35,27 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButtonSALIR = new javax.swing.JButton();
         jButtonSIGUIENTE = new javax.swing.JButton();
         jComboBoxROLL = new javax.swing.JComboBox<>();
         jLabelLOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabelFONDO = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -159,5 +180,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFONDO;
     private javax.swing.JLabel jLabelLOGO;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

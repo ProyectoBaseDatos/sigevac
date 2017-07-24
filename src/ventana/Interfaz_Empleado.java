@@ -34,6 +34,7 @@ public class Interfaz_Empleado extends javax.swing.JFrame {
         jLabelImagenAlquilar = new javax.swing.JLabel();
         jButtonAtrasAadministrador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonSalir = new javax.swing.JButton();
         jLabelFondoEmpleado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,6 +85,14 @@ public class Interfaz_Empleado extends javax.swing.JFrame {
         jLabel1.setText("Menú del Empleado");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
+        jButtonSalir.setText("SALIR");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, -1, -1));
+
         jLabelFondoEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall.png"))); // NOI18N
         getContentPane().add(jLabelFondoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 250));
 
@@ -119,6 +128,11 @@ public class Interfaz_Empleado extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jButtonRegistraralquilerMouseClicked
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +174,7 @@ public class Interfaz_Empleado extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtrasAadministrador;
     private javax.swing.JButton jButtonRegistrarCompra;
     private javax.swing.JButton jButtonRegistraralquiler;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFondoEmpleado;
     private javax.swing.JLabel jLabelImagenAlquilar;

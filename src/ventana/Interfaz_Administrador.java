@@ -5,6 +5,13 @@
  */
 package ventana;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author cindybohorquezsantana
@@ -36,7 +43,6 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
         jButtonCliente = new javax.swing.JButton();
         jButtonPrecioCortina = new javax.swing.JButton();
         jButtonAlquilerCortina = new javax.swing.JButton();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMostrarAdmin = new javax.swing.JTable();
         jLabelFondoAdmin = new javax.swing.JLabel();
@@ -66,12 +72,27 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, -1));
 
         jButtonProveedor.setText("Ver Lista De Proveedores");
+        jButtonProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProveedorActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         jButtonEmpleado.setText(" Ver Lista De Empleados  ");
+        jButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmpleadoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jButtonCliente.setText("     Ver Lista De Clientes   ");
+        jButtonCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jButtonPrecioCortina.setText("Registrar Precios De Cortinas");
@@ -79,7 +100,6 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
 
         jButtonAlquilerCortina.setText("Registar Precios De Alquiler De Cortinas");
         getContentPane().add(jButtonAlquilerCortina, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
-        getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 150, -1, -1));
 
         jTableMostrarAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,10 +110,15 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "   ", "   ", "   ", "   ", "   "
             }
         ));
         jScrollPane1.setViewportView(jTableMostrarAdmin);
@@ -118,6 +143,107 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirAdminActionPerformed
 
+    private void jButtonProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProveedorActionPerformed
+        // TODO add your handling code here:
+        Conectar conecta = new Conectar();
+        Connection reg = conecta.getConnection();
+        DefaultTableModel modelo = new DefaultTableModel();
+       
+        modelo.addColumn("Id");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
+          
+        jTableMostrarAdmin.setModel(modelo);
+        String sql = "SELECT * FROM proveedor ORDER BY idProveedor";
+        String []datos=new String [5];
+        
+        try{
+            Statement st = reg.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+            datos[0]=rs.getString(1);
+            datos[1]=rs.getString(2);
+            datos[2]=rs.getString(3);
+            datos[3]=rs.getString(4);
+            datos[4]=rs.getString(5);
+            
+            modelo.addRow(datos);
+            }
+            jTableMostrarAdmin.setModel(modelo);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al conectar con SIGEVAC");
+        }
+    }//GEN-LAST:event_jButtonProveedorActionPerformed
+
+    private void jButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpleadoActionPerformed
+        // TODO add your handling code here:
+        Conectar conecta = new Conectar();
+        Connection reg = conecta.getConnection();
+        DefaultTableModel modelo = new DefaultTableModel();
+       
+        modelo.addColumn("Id");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Rol");
+        modelo.addColumn("Factura");
+          
+        jTableMostrarAdmin.setModel(modelo);
+        String sql = "SELECT * FROM empleado ORDER BY idEmpleado";
+        String []datos = new String [4];
+        
+        try{
+            Statement st = reg.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+            datos[0]=rs.getString(1);
+            datos[1]=rs.getString(2);
+            datos[2]=rs.getString(3);
+            datos[3]=rs.getString(4);
+            
+            modelo.addRow(datos);
+            }
+            jTableMostrarAdmin.setModel(modelo);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al conectar con SIGEVAC");
+        }
+    
+    }//GEN-LAST:event_jButtonEmpleadoActionPerformed
+
+    private void jButtonClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClienteActionPerformed
+        // TODO add your handling code here:
+        Conectar conecta = new Conectar();
+        Connection reg = conecta.getConnection();
+        DefaultTableModel modelo = new DefaultTableModel();
+       
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Telefono");
+          
+        jTableMostrarAdmin.setModel(modelo);
+        String sql = "SELECT * FROM clientes ORDER BY apellidoCliente";
+        String []datos=new String [5];
+        
+        try{
+            Statement st = reg.createStatement();
+            ResultSet rs=st.executeQuery(sql);
+            while(rs.next()){
+            datos[0]=rs.getString(1);
+            datos[1]=rs.getString(2);
+            datos[2]=rs.getString(3);
+            datos[3]=rs.getString(4);
+            datos[4]=rs.getString(5);
+            
+            modelo.addRow(datos);
+            }
+            jTableMostrarAdmin.setModel(modelo);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Error al conectar con SIGEVAC");
+        }
+    }//GEN-LAST:event_jButtonClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -134,19 +260,16 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaz_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaz_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaz_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Interfaz_Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Interfaz_Administrador().setVisible(true);
             }
@@ -163,7 +286,6 @@ public class Interfaz_Administrador extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalirAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelFondoAdmin;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableMostrarAdmin;
     // End of variables declaration//GEN-END:variables

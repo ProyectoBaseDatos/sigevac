@@ -7,6 +7,7 @@ package ventana;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +17,8 @@ public class Conectar {
     
     private static java.sql.Connection conecta;
     private static final String DRIVER = "org.gjt.mm.mysql.Driver";
-    private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String USER = JOptionPane.showInputDialog("Ingrese usuario Worbench");;
+    private static final String PASSWORD = JOptionPane.showInputDialog("Ingrese contraseña");;
     private static final String URL = "jdbc:mysql://localhost:3306/sigevac";
 
     public Conectar() {
@@ -31,11 +32,12 @@ public class Conectar {
             }
             
         }catch(ClassNotFoundException | SQLException e){
-                System.out.println("Error en la conexion..." + e);
+            JOptionPane.showMessageDialog(null,"Error en la conexion...");
+            System.exit(0);
  
         }
     }
-
+   
     public java.sql.Connection getConnection() {
         return conecta;
     }
@@ -43,8 +45,7 @@ public class Conectar {
     public void desConectar() {
         conecta = null;
         if(conecta == null){
-            System.out.println("Conexion terminada...");
+            JOptionPane.showMessageDialog(null,"Conexion terminada...");
         }
     }
-    
 }

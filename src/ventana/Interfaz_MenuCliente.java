@@ -34,6 +34,7 @@ public class Interfaz_MenuCliente extends javax.swing.JFrame {
         jLabelImgRegistrarCliente = new javax.swing.JLabel();
         jLabelBuscarCliente = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButtonSalir = new javax.swing.JButton();
         jLabelFondoInterfazCompra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,6 +80,14 @@ public class Interfaz_MenuCliente extends javax.swing.JFrame {
         jLabel1.setText("Menú del Cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
+        jButtonSalir.setText("SALIR");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+
         jLabelFondoInterfazCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/wall.png"))); // NOI18N
         jLabelFondoInterfazCompra.setText("jLabel1");
         getContentPane().add(jLabelFondoInterfazCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 230));
@@ -110,6 +119,11 @@ public class Interfaz_MenuCliente extends javax.swing.JFrame {
             iBC.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_jButtonBuscarClienteMouseClicked
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +167,7 @@ public class Interfaz_MenuCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAtrasAEmpleado;
     private javax.swing.JButton jButtonBuscarCliente;
     private javax.swing.JButton jButtonRegistrarCliente;
+    private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBuscarCliente;
     private javax.swing.JLabel jLabelFondoInterfazCompra;
